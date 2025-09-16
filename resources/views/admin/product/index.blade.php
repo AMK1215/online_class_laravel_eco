@@ -112,42 +112,47 @@
               </td>
               <td>{{ $product->created_at->format('M d, Y') }}</td>
               <td>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center gap-1">
                   <a href="{{ route('admin.products.show', $product->id) }}" 
-                     class="btn btn-link btn-sm mb-0 px-0 ms-4" 
+                     class="btn btn-outline-primary btn-sm px-2" 
                      data-bs-toggle="tooltip" data-bs-placement="top" title="View Product">
-                    <i class="fas fa-eye text-secondary"></i>
+                    <i class="material-icons text-sm">visibility</i>
                   </a>
                   <a href="{{ route('admin.products.edit', $product->id) }}" 
-                     class="btn btn-link btn-sm mb-0 px-0 ms-4" 
+                     class="btn btn-outline-info btn-sm px-2" 
                      data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Product">
-                    <i class="fas fa-pencil-alt text-secondary"></i>
+                    <i class="material-icons text-sm">edit</i>
+                  </a>
+                  <a href="{{ route('admin.products.image-update', $product->id) }}" 
+                     class="btn btn-outline-warning btn-sm px-2" 
+                     data-bs-toggle="tooltip" data-bs-placement="top" title="Update Image">
+                    <i class="material-icons text-sm">image</i>
                   </a>
                   
                   <!-- Toggle Status Button -->
                   <form action="{{ route('admin.products.toggle-status', $product->id) }}" 
-                        method="POST" class="d-inline-block ms-2">
+                        method="POST" class="d-inline-block">
                     @csrf
-                    <button type="submit" class="btn btn-link btn-sm mb-0 px-0" 
+                    <button type="submit" class="btn btn-outline-success btn-sm px-2" 
                             data-bs-toggle="tooltip" data-bs-placement="top" 
                             title="{{ $product->status->name === 'Active' ? 'Deactivate' : 'Activate' }}">
                       @if($product->status->name === 'Active')
-                        <i class="fas fa-toggle-on text-success"></i>
+                        <i class="material-icons text-sm">toggle_on</i>
                       @else
-                        <i class="fas fa-toggle-off text-secondary"></i>
+                        <i class="material-icons text-sm">toggle_off</i>
                       @endif
                     </button>
                   </form>
                   
                   <!-- Delete Button -->
                   <form action="{{ route('admin.products.destroy', $product->id) }}" 
-                        method="POST" class="d-inline-block ms-2">
+                        method="POST" class="d-inline-block">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-link btn-sm mb-0 px-0" 
+                    <button type="submit" class="btn btn-outline-danger btn-sm px-2" 
                             data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Product" 
                             onclick="return confirm('Are you sure you want to delete this product?')">
-                      <i class="fas fa-trash text-secondary"></i>
+                      <i class="material-icons text-sm">delete</i>
                     </button>
                   </form>
                 </div>

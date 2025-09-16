@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductStatusController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageUpdateController;
 
 Route::group([
     'prefix' => 'admin', 'as' => 'admin.',
@@ -53,4 +54,9 @@ Route::group([
     Route::resource('products', ProductController::class);
     Route::post('products/{id}/toggle-status', [ProductController::class, 'toggleStatus'])->name('products.toggle-status');
     Route::post('products/{id}/update-quantity', [ProductController::class, 'updateQuantity'])->name('products.update-quantity');
+    
+    // Product Image Update routes
+    Route::get('products/{id}/image-update', [ProductImageUpdateController::class, 'edit'])->name('products.image-update');
+    Route::put('products/{id}/image-update', [ProductImageUpdateController::class, 'update'])->name('products.image-update.update');
+    Route::delete('products/{id}/image-remove', [ProductImageUpdateController::class, 'destroy'])->name('products.image-remove');
 });

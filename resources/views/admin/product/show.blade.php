@@ -42,7 +42,7 @@
                   </div>
                 @endif
                 
-                <!-- Quick Actions -->
+                    <!-- Quick Actions -->
                 <div class="mt-3">
                   <div class="d-grid gap-2">
                     @if($product->status->name === 'Active')
@@ -60,6 +60,12 @@
                         </button>
                       </form>
                     @endif
+                    
+                    <!-- Image Update -->
+                    <a href="{{ route('admin.products.image-update', $product->id) }}" 
+                       class="btn btn-outline-primary btn-sm">
+                      <i class="fas fa-image me-1"></i> Update Image
+                    </a>
                     
                     <!-- Quick Quantity Update -->
                     <button type="button" class="btn btn-outline-info btn-sm" 
