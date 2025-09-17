@@ -57,6 +57,11 @@ class Product extends Model
         return $this->belongsToMany(ProductTag::class, 'product_tag', 'product_id', 'product_tag_id');
     }
 
+    public function attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
+
     // Scopes
     public function scopeActive($query)
     {

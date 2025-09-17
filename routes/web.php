@@ -51,3 +51,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('welcome', function(){
     return view('welcome');
 });
+
+// User Product routes
+Route::get('products', [\App\Http\Controllers\UserProductController::class, 'index'])->name('products.index');
+Route::get('products/search', [\App\Http\Controllers\UserProductController::class, 'search'])->name('products.search');
+Route::get('products/{id}', [\App\Http\Controllers\UserProductController::class, 'show'])->name('products.show');
+Route::get('category/{id}/products', [\App\Http\Controllers\UserProductController::class, 'byCategory'])->name('products.by-category');
+Route::get('vendor/{id}/products', [\App\Http\Controllers\UserProductController::class, 'byVendor'])->name('products.by-vendor');
